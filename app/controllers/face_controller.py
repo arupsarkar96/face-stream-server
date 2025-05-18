@@ -103,8 +103,6 @@ async def track_faces_and_embeddings(file: UploadFile, db: Session) -> List[Trac
     results = []
 
     for i, face in enumerate(faces):
-        if face.embedding is None:
-            continue
         bbox = face.bbox.astype(int)
         cropped_face = image.crop((bbox[0], bbox[1], bbox[2], bbox[3]))
 
