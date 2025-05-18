@@ -1,0 +1,14 @@
+pydantic
+python-dotenv
+SQLAlchemy
+ulid-py
+fastapi
+uvicorn
+gunicorn
+pymysql
+insightface
+numpy
+onnxruntime
+faiss-cpu
+python-multipart
+minio

@@ -1,0 +1,5 @@
+face_index.faiss
+face_metadata.json
+.env
+uploads
+.venv
