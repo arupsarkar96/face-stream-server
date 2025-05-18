@@ -2,7 +2,7 @@
 
 set -e
 
-APP_NAME="face-stream-server"
+APP_NAME="fastapi"
 APP_DIR="$PWD"
 VENV_DIR="$APP_DIR/venv"
 USER=$(whoami)
@@ -37,7 +37,10 @@ After=network.target
 [Service]
 User=$USER
 WorkingDirectory=$APP_DIR
-ExecStart=$VENV_DIR/bin/gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8000 --workers 4
+ExecStart=$VENV_DIR/bin/gunicorn app.main:app \\
+    -k uvicorn.workers.UvicornWorker \\
+    --bind 0.0.0.0:8000 \\
+    --workers $(nproc --all)
 Restart=always
 Environment=PATH=$VENV_DIR/bin
 
