@@ -131,6 +131,7 @@ async def track_faces_and_embeddings(file: UploadFile, db: Session) -> List[Trac
             person=PersonOut.model_validate(person)
         )
         results.append(match_out)
+        minio_client.fput_object(settings.S3_BUCKET_DETECTED, face_filename, face_path)
         os.remove(face_path)
 
     os.remove(temp_path)

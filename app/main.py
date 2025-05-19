@@ -1,10 +1,7 @@
 import json
 from contextlib import asynccontextmanager
-
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
-from starlette.staticfiles import StaticFiles
-
 from app.api.route_v1 import router
 from app.core.faiss_manager import FaissIndexManager
 from app.db.base import Base
@@ -19,6 +16,7 @@ index_manager = None  # Global reference
 async def lifespan(app: FastAPI):
     global index_manager
     index_manager = FaissIndexManager()
+
 
     if not index_manager.files_exist():
         print("No local index found. Building from database...")

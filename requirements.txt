@@ -12,3 +12,4 @@ onnxruntime
 faiss-cpu
 python-multipart
 minio
+starlette
